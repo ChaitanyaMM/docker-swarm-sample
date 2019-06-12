@@ -1,0 +1,22 @@
+version: '3.2'
+
+networks:
+  cman:
+  
+services:
+
+  dockerswarm:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    image: chaitu465/docker-swarm:0.1.0
+    ports:
+      - 5001:9898
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+    networks:
+      - cman
+   
+ 
